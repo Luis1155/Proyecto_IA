@@ -4,7 +4,7 @@ import sys
 from ImaProcessor import ImageProcessor
 import MazSolver
 
-MAZE_NAME = "Ventana de Visualización del Laberinto"
+MAZE_NAME = "Ventana de Visualizacion del Laberinto"
 point = (-1,-1)
 
 def setupWindow():
