@@ -4,7 +4,7 @@ import sys
 from ImaProcessor import ImageProcessor
 import MazSolver
 
-MAZE_NAME = "Maze Display Window"
+MAZE_NAME = "Ventana de Visualización del Laberinto"
 point = (-1,-1)
 
 def setupWindow():
@@ -18,7 +18,7 @@ def setupWindow():
     
     granularity = imageProcessor.get_granularity(image, 100)
     
-    print("Granularity: {0}".format(granularity))
+    print("Granularidad: {0}".format(granularity))
     
     start_x,start_y,end_x,end_y = get_start_points(image)
     
@@ -34,11 +34,11 @@ def setupWindow():
         solvedImage = draw_solution(solution, colourImage)
         solvedImage = imageProcessor.mark_point((end_x,end_y),3,(255,0,0),solvedImage)
         solvedImage = imageProcessor.mark_point((start_x,start_y),3,(255,0,0),solvedImage)
-        window = cv2.namedWindow("Solved Image", cv2.WINDOW_NORMAL)
-        cv2.resizeWindow("Solved Image", 900,900)
-        cv2.moveWindow("Solved Image",100,100)
-        cv2.imshow("Solved Image",solvedImage)
-    print "Press any key to exit"
+        window = cv2.namedWindow("Imagen Resuelta", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("Imagen Resuelta", 900,900)
+        cv2.moveWindow("Imagen Resuelta",100,100)
+        cv2.imshow("Imagen Resuelta",solvedImage)
+    print "Presiona cualquier tecla para salir."
     cv2.waitKey(0)
     cv2.destroyAllWindows
 
@@ -54,19 +54,19 @@ def get_start_points(image):
     cv2.resizeWindow(MAZE_NAME, 900,900)
     cv2.imshow(MAZE_NAME,image)
     cv2.moveWindow(MAZE_NAME,100,100)
-    print("Please \'S\' to select start and end points")
+    print("Por favor presiona \'S\' para seleccionar los puntos de inicio y fin")
 
     while(True):
         key = cv2.waitKey(0)
         if key == ord ('s'):
-            print("Please select a start point")
+            print("Por favor selecciona un punto de inicio")
             start_x,start_y = get_user_selected_point(image)
-            print ("Start Point: {0}, please select an end point".format((start_x,start_y)))
+            print ("Punto de inicio: {0}, Por favor selecciona un punto de fin".format((start_x,start_y)))
             end_x,end_y = get_user_selected_point(image)
-            print("End Pont: {0}".format((end_x,end_y)))
+            print("Punto de fin: {0}".format((end_x,end_y)))
             break
         else:
-            print("Invalid")
+            print("Invalido")
             continue
     cv2.destroyAllWindows()
     return start_x,start_y,end_x,end_y
@@ -75,17 +75,17 @@ def get_user_selected_point(image):
     global point
     point = (-1,-1)
     cv2.setMouseCallback(MAZE_NAME,get_mouse_point)
-    print("Press any key once you have selected your point")
+    print("Presiona una tecla despues de haber seleccionado el punto.")
     while point == (-1,-1):
         cv2.waitKey(0)
         if(point == (-1,-1)):
-            print("Invalid pont, please try again")
+            print("Punto invalido, por favor intenta de nuevo")
     return point[0],point[1]
 
 def get_mouse_point(event,x,y,flags,param):
     global point
     if event == cv2.EVENT_LBUTTONUP:
-        print("Point {0},{1} selected".format(x,y))
+        print("Punto {0},{1} seleccionado".format(x,y))
         point = (x,y)
 
 setupWindow()
