@@ -1,29 +1,14 @@
 import numpy as np
 import cv2
-import Tkinter as Tk
 import sys
 from ImageProcessor import ImageProcessor
 import MazeSolver
-from tkFileDialog import askopenfilename
 
 MAZE_NAME = "Maze Display Window"
 point = (-1,-1)
 
-"""def getUserSelectedFilePath():
-    root = Tk.Tk()
-    root.withdraw()
-    filepath = askopenfilename()
-    return filepath
-
-def getUserSelectedImage():
-    filename = " "
-    while not ".png" in filename :
-        print("Please Select a .png maze image")
-        filename = getUserSelectedFilePath()
-    return filename"""
-
 def setupWindow():
-    filename = "Maze1.png"#getUserSelectedImage()
+    filename = "Maze1.png"
     
     imageProcessor = ImageProcessor(cv2.imread(filename,0))
     

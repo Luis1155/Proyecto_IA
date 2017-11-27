@@ -43,7 +43,6 @@ class ImageProcessor:
                 if(image[j,i] == 0):
                     return i
 
-
     def getBounds(self,image):
         height, width = image.shape[:2]
         topBound = self.getTopBound(image)
