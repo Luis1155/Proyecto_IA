@@ -27,7 +27,7 @@ class MazeSolver:
         self.nodes_to_visit.put((curr_node.get_priority(end_node,0),curr_node))
         while curr_node.position!=end_node.position and not self.nodes_to_visit.empty():
             if(i%10000 == 0):
-                print "Iteration {0} complete".format(i)
+                print "Iteracion {0} completada".format(i)
             curr_node = self.nodes_to_visit.get()[1]
             for node in self._get_new_nodes(curr_node):
                 distance = self.node_distances[curr_node.position] +self.GRANULARITY;
@@ -45,10 +45,10 @@ class MazeSolver:
             self.visited_nodes[curr_node.position] = True
             i+=1
         if curr_node.position == end_node.position:
-            print("Algorithm completed. Total iterations: {0}".format(i))
+            print("Algoritmo completado. Total iteraciones: {0}".format(i))
             return self._get_solution_list(curr_node)
         else:
-            print("No solution found")
+            print("Solucion no encontrada")
             return False
 
     def _get_solution_list(self, node):
@@ -67,7 +67,7 @@ class MazeSolver:
             self.end_x > parent.position[0] - granularity and
             self.end_y < parent.position[1] + granularity and
             self.end_y > parent.position[1] - granularity):
-            print "Getting Close! Position is:{0}".format(parent.position)
+            print "Acercandose! La posicion es:{0}".format(parent.position)
 
             granularity = 1
 
