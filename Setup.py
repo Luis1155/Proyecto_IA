@@ -1,14 +1,14 @@
 import numpy as np
 import cv2
 import sys
-from ImageProcessor import ImageProcessor
-import MazeSolver
+from ImaProcessor import ImageProcessor
+import MazSolver
 
 MAZE_NAME = "Maze Display Window"
 point = (-1,-1)
 
 def setupWindow():
-    filename = "Maze1.png"
+    filename = "Imagenes/Maze 7.png"
     
     imageProcessor = ImageProcessor(cv2.imread(filename,0))
     
@@ -24,7 +24,7 @@ def setupWindow():
     
     image = imageProcessor.encloseMaze(image)
     
-    mazerunner = MazeSolver.MazeSolver(image,granularity)
+    mazerunner = MazSolver.MazeSolver(image,granularity)
     
     solution = mazerunner.solveMaze(start_x,start_y,end_x,end_y)
 
